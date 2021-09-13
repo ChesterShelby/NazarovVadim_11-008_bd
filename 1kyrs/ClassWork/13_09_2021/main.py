@@ -49,10 +49,12 @@ while a == 0:
         with open('db.json', 'r', encoding='utf-8') as f:
             db_new = json.load(f)
         add(db_new, name, number_phone, location, cost, driver_name, driver_number_phone, car, model_car, account)
-        with open('db.json', 'r', encoding='utf-8') as f:
-            for i in f:
-                print(i)
-        a = int(input('Добавить еще пользователя 0 \n 1 - закончить \n'))
+        a = int(input('\n'
+                      '--------------------\n'
+                      'Добавить еще пользователя 0 \n'
+                      ' 1 - закончить \n'
+                      '--------------------\n\n'))
+
     except FileNotFoundError:
         db = {
             'db': {
@@ -70,4 +72,8 @@ while a == 0:
         }
 
         add(db, name, number_phone, location, cost, driver_name, driver_number_phone, car, model_car, account)
-        a = int(input('Добавить еще пользователя 0 \n 1 - закончить \n'))
+        a = int(input('\n'
+                      '--------------------\n'
+                      'Добавить еще пользователя 0 \n'
+                      ' 1 - закончить \n'
+                      '--------------------\n\n'))
