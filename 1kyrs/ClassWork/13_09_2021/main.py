@@ -43,7 +43,7 @@ def add(db, name, number_phone, location, cost, driver_name, driver_number_phone
 
 a = int(input('\n'
               '--------------------\n'
-              ' 0 - Добавить пользователя  \n'
+              ' 0 - Добавить еще пользователя  \n'
               ' 1 - Закончить \n'
               ' 2 - Поиск клиента\n'
               '--------------------\n\n'))
@@ -89,21 +89,49 @@ while a == 0:
 
 
 while a == 2:
+    try:
+        f = open('db.json')
+        f.close()
+        with open('db.json', 'r', encoding='utf-8') as f:
+            db = json.load(f)
+        find_list = []
+        word = input('Имя клиента\t')
+        lst = ['clients', 'Apps', 'Bank', 'Driver', 'Company']
+        for j in lst:
+            clients_list = db.get('db').get(f'{j}')
+            for i in clients_list:
+                if i.get('client name') == word:
+                    find_list.append(i)
+        print(find_list)
+        a = int(input('\n'
+                      '--------------------\n'
+                      ' 0 - Добавить еще пользователя  \n'
+                      ' 1 - Закончить \n'
+                      ' 2 - Поиск клиента\n'
+                      '--------------------\n\n'))
 
-    with open('db.json', 'r', encoding='utf-8') as f:
-        db = json.load(f)
-    find_list = []
-    word = input('Имя клиента\t')
-    lst = ['clients', 'Apps', 'Bank', 'Driver', 'Company']
-    for j in lst:
-        clients_list = db.get('db').get(f'{j}')
-        for i in clients_list:
-            if i.get('client name') == word:
-                find_list.append(i)
-    print(find_list)
-    a = int(input('\n'
-                  '--------------------\n'
-                  ' 0 - Добавить еще пользователя  \n'
-                  ' 1 - Закончить \n'
-                  ' 2 - Поиск клиента\n'
-                  '--------------------\n\n'))
+    except FileNotFoundError:
+        print('База данных пуста, пожалуйста, заполните ее')
+
+        db = {
+            'db': {
+                'clients': [
+                ],
+                'Apps': [
+                ],
+                'Bank': [
+                ],
+                'Driver': [
+                ],
+                'Company': [
+                ]
+            }
+        }
+
+        add(db, name, number_phone, location, cost, driver_name, driver_number_phone, car, model_car, account)
+        a = int(input('\n'
+                      '--------------------\n'
+                      ' 0 - Добавить еще пользователя  \n'
+                      ' 1 - Закончить \n'
+                      ' 2 - Поиск клиента\n'
+                      '--------------------\n\n'))
