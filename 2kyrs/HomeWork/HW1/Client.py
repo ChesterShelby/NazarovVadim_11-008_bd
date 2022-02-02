@@ -1,10 +1,5 @@
 class Client:
 
-    # def __init__(self, name, number_phone, location):
-    #     self.name = name
-    #     self.number_phone = number_phone
-    #     self.location = location
-
     def get_name(self):
         name = input('Имя пользователя\t')
         return name

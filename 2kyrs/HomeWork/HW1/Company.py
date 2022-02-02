@@ -1,6 +1,5 @@
 import random
 
-
 class Company:
 
     def set_account(self):

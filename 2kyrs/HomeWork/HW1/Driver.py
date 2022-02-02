@@ -1,11 +1,5 @@
 class Driver:
 
-    # def __init__(self, name, number_phone, car, model_car):
-    #     self.name = name
-    #     self.number_phone = number_phone
-    #     self.car = car
-    #     self.model_car = model_car
-
     def name(self):
         name = input('Имя водителя\t')
         return name

@@ -5,8 +5,7 @@ from Apps import Apps as ap
 from Driver import Driver as dr
 from Company import Company as cp
 
-name, number_phone, location, cost, driver_name, driver_number_phone, car, model_car, account = \
-    None, None, None, None, None, None, None, None, None
+name, number_phone, location, cost, driver_name, driver_number_phone, car, model_car, account = [None] * 9
 
 
 def add(db, name, number_phone, location, cost, driver_name, driver_number_phone, car, model_car, account):
@@ -43,7 +42,7 @@ def add(db, name, number_phone, location, cost, driver_name, driver_number_phone
 
 a = int(input('\n'
               '--------------------\n'
-              ' 0 - Добавить еще пользователя  \n'
+              ' 0 - Добавить пользователя  \n'
               ' 1 - Закончить \n'
               ' 2 - Поиск клиента\n'
               '--------------------\n\n'))
@@ -58,7 +57,7 @@ while a == 0:
         add(db_new, name, number_phone, location, cost, driver_name, driver_number_phone, car, model_car, account)
         a = int(input('\n'
                       '--------------------\n'
-                      ' 0 - Добавить еще пользователя  \n'
+                      ' 0 - Добавить пользователя  \n'
                       ' 1 - Закончить \n'
                       ' 2 - Поиск клиента\n'
                       '--------------------\n\n'))
@@ -82,7 +81,7 @@ while a == 0:
         add(db, name, number_phone, location, cost, driver_name, driver_number_phone, car, model_car, account)
         a = int(input('\n'
                       '--------------------\n'
-                      ' 0 - Добавить еще пользователя  \n'
+                      ' 0 - Добавить пользователя  \n'
                       ' 1 - Закончить \n'
                       ' 2 - Поиск клиента\n'
                       '--------------------\n\n'))
@@ -102,10 +101,13 @@ while a == 2:
             for i in clients_list:
                 if i.get('client name') == word:
                     find_list.append(i)
-        print(find_list)
+        if find_list == []:
+            print('Таких клиентов нет')
+        else:
+            print(find_list)
         a = int(input('\n'
                       '--------------------\n'
-                      ' 0 - Добавить еще пользователя  \n'
+                      ' 0 - Добавить пользователя  \n'
                       ' 1 - Закончить \n'
                       ' 2 - Поиск клиента\n'
                       '--------------------\n\n'))
@@ -131,7 +133,7 @@ while a == 2:
         add(db, name, number_phone, location, cost, driver_name, driver_number_phone, car, model_car, account)
         a = int(input('\n'
                       '--------------------\n'
-                      ' 0 - Добавить еще пользователя  \n'
+                      ' 0 - Добавить пользователя  \n'
                       ' 1 - Закончить \n'
                       ' 2 - Поиск клиента\n'
                       '--------------------\n\n'))

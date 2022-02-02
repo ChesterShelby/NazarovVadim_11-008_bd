@@ -1,7 +1,6 @@
 import random
 from Client import Client as cl
 
-
 class Apps:
 
     def client(self):
